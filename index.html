@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraze</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sf-pro-display@2.0.1/fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="Favicon1.png">
+
+
+    <style id="app-style">
+        :root {
+            /* Light Theme (Default) */
+            --bg-primary: #f2f2f7;
+            --bg-secondary: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #6e6e73;
+            --accent: #007aff;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --nav-bg: rgba(255, 255, 255, 0.7);
+            --border: rgba(0, 0, 0, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --button-text: #ffffff;
+            --theme-name: "Light";
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --text-primary: #ffffff;
+            --text-secondary: #98989d;
+            --accent: #0a84ff;
+            --card-bg: rgba(44, 44, 46, 0.7);
+            --nav-bg: rgba(28, 28, 30, 0.7);
+            --border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --button-text: #ffffff;
+            --theme-name: "Dark";
+        }
+
+        [data-theme="neopop"] {
+            --bg-primary: #0F0F0F;
+            --bg-secondary: #131313;
+            --text-primary: #00FFDD;
+            --text-secondary: #00BBAA;
+            --accent: #FF2266;
+            --card-bg: rgba(19, 19, 19, 0.7);
+            --nav-bg: rgba(15, 15, 15, 0.7);
+            --border: #FF2266;
+            --shadow: 4px 4px 0px #FF2266;
+            --button-text: #000000;
+            --theme-name: "Neopop";
+        }
+
+        [data-theme="rainbow"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --accent: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --nav-bg: rgba(255, 255, 255, 0.7);
+            --border: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --button-text: #ffffff;
+            --theme-name: "Rainbow";
+        }
+
+        [data-theme="aurora"] {
+            --bg-primary: #0b1026;
+            --bg-secondary: #162040;
+            --text-primary: #9aeaff;
+            --text-secondary: #56c9e8;
+            --accent: #56e8d0;
+            --card-bg: rgba(22, 32, 64, 0.7);
+            --nav-bg: rgba(11, 16, 38, 0.7);
+            --border: rgba(86, 233, 208, 0.3);
+            --shadow: 0 8px 32px rgba(86, 233, 208, 0.2);
+            --button-text: #0b1026;
+            --theme-name: "Aurora";
+        }
+
+        [data-theme="neon"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --text-primary: #00ffff;
+            --text-secondary: #00cccc;
+            --accent: #ff00ff;
+            --card-bg: rgba(18, 18, 18, 0.7);
+            --nav-bg: rgba(10, 10, 10, 0.7);
+            --border: rgba(255, 0, 255, 0.5);
+            --shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            --button-text: #000000;
+            --theme-name: "Neon";
+        }
+
+        [data-theme="glassmorphism"] {
+            --bg-primary: #e0e0e0;
+            --bg-secondary: rgba(255, 255, 255, 0.25);
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --accent: #3a86ff;
+            --card-bg: rgba(255, 255, 255, 0.25);
+            --nav-bg: rgba(255, 255, 255, 0.25);
+            --border: rgba(255, 255, 255, 0.18);
+            --shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            --button-text: #ffffff;
+            --theme-name: "Glass";
+        }
+
+        [data-theme="cute"] {
+            --bg-primary: #fff9f9;
+            --bg-secondary: #ffecf1;
+            --text-primary: #ff6b8b;
+            --text-secondary: #ff8fa9;
+            --accent: #ff4172;
+            --card-bg: rgba(255, 236, 241, 0.7);
+            --nav-bg: rgba(255, 249, 249, 0.7);
+            --border: rgba(255, 107, 139, 0.3);
+            --shadow: 0 8px 32px rgba(255, 107, 139, 0.15);
+            --button-text: #ffffff;
+            --theme-name: "Cute";
+            --font-family: 'Comic Neue', 'SF Pro Text', -apple-system, sans-serif;
+        }
+
+        [data-theme="rounded"] {
+            --bg-primary: #f9f9f9;
+            --bg-secondary: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #777777;
+            --accent: #5e7ce2;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --nav-bg: rgba(255, 255, 255, 0.7);
+            --border: rgba(94, 124, 226, 0.2);
+            --shadow: 0 12px 32px rgba(94, 124, 226, 0.15);
+            --button-text: #ffffff;
+            --button-radius: 30px;
+            --card-radius: 24px;
+            --theme-name: "Rounded";
+        }
+
+        [data-theme="golden"] {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #ffd700;
+            --text-secondary: #ffc87c;
+            --accent: #ffc107;
+            --card-bg: rgba(22, 27, 34, 0.7);
+            --nav-bg: rgba(13, 17, 23, 0.7);
+            --border: rgba(255, 215, 0, 0.3);
+            --shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            --button-text: #0d1117;
+            --theme-name: "Golden";
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font-family, 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-button {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .theme-button:hover {
+            transform: scale(1.1);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        section {
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* Home Section */
+        #home {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 60px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: var(--button-text);
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: var(--button-radius, 20px);
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--card-radius, 16px);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .download-button {
+            background-color: var(--accent);
+            color: var(--button-text);
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: var(--button-radius, 20px);
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            font-size: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: var(--card-radius, 16px);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            color: var(--accent);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-info h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-info p {
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-method i {
+            font-size: 20px;
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--card-bg);
+            border-radius: var(--card-radius, 16px);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: var(--button-radius, 10px);
+            border: 1px solid var(--border);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: var(--accent);
+            color: var(--button-text);
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: var(--button-radius, 20px);
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 40px 0;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-logo a {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .footer-logo p {
+            color: var(--text-secondary);
+            margin-top: 15px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-links h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent);
+            color: var(--button-text);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .theme-indicator {
+            position: fixed;
+            top: 85px;
+            right: 20px;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .theme-indicator.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Download Page Styles */
+        .download-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .download-icon {
+            font-size: 80px;
+            color: var(--accent);
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite ease-in-out alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+            to {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .download-message {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .download-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease forwards 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease forwards 0.6s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent);
+            width: 0;
+            border-radius: 4px;
+            transition: width 3s ease;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .back-button {
+            margin-top: 40px;
+            animation: fadeInUp 1s ease forwards 0.9s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .feature-card {
+                flex-direction: column;
+            }
+
+            .feature-icon {
+                margin-bottom: 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background-color: var(--card-bg);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                width: 70%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                padding: 50px 20px;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--border);
+                z-index: 999;
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .theme-toggle {
+                margin-right: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">
+                    <i class="fas fa-code"></i> CodeCraze
+                </a>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="theme-toggle">
+                    <button class="theme-button" id="theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+                <button class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="theme-indicator" id="theme-indicator">Light Theme</div>
+
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Premium Code Resources for Developers</h1>
+                <p class="hero-subtitle">Explore our collection of high-quality code tools, snippets, and resources designed to enhance your development workflow.</p>
+                <a href="#products" class="cta-button">Explore Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Discover tools and resources to supercharge your development process</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://www.dropbox.com/scl/fi/to6y1fmifkwwisrhhycwx/ChatGPT-Image-Aug-11-2025-04_00_29-PM.png?rlkey=w2zqmfogfc5c1lbaexj5h82gt&st=r2o97yfz&dl=1
+" alt="Code Editor Pro" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">YearSnap</h3>
+                        <p class="product-description">⌛ Instant Age Calculator – Know Your Age in a Blink!
+⏱️ Instant Age Calculator that delivers precise results in seconds 🎯</p>
+                        <a href="https://drive.google.com/drive/folders/1rpo0KNSXBtEdM4HCTEcM4UlQ85GiHo3S?usp=drive_link" class="download-button">Download</a>                                                                                                                           
+                         <a href=" https://codecraze23.github.io/YearSnap_CodeCraze/" class=" download-button ">Live</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://www.dropbox.com/scl/fi/dtztq2nofbdao38bzvh8s/1000087958.png?rlkey=5vbi13xvwtqsh8o9vsbble8n0&st=1qtgztsp&dl=1
+" alt="AI Code Assistant" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">BMI Calculator</h3>
+                        <p class="product-description">⚖️ BMI Calculator that gives accurate health insights in seconds 💪</p>
+                        <a href="https://drive.google.com/drive/folders/1xdYUnXpQBHpM8SvsM6IopU-tmFlLME_v?usp=drive_link" class="download-button">Download</a>
+                        <a href="https://codecraze23.github.io/BMI_BY_CodeCraze/" class="download-button">Live</a>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About CodeCraze</h2>
+            <p class="section-subtitle">We create tools that help developers work more efficiently</p>
+            <div class="about-content">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Our Mission</h3>
+                        <p>We're on a mission to make development faster, easier, and more enjoyable. Our tools are designed to eliminate repetitive tasks, streamline workflows, and help you focus on what matters most: creating amazing software.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Built by Developers</h3>
+                        <p>Every tool we create comes from real-world problems we've faced as developers. We understand the challenges of modern development and design our products to solve them effectively.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-info">
+                        <h3>Community Driven</h3>
+                        <p>We believe in the power of community. Our tools are constantly improved based on feedback from developers like you, ensuring they meet real-world needs and solve real problems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Have questions or need support? We're here to help.</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>We'd love to hear from you! Reach out with any questions, feedback, or collaboration ideas.</p>
+
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>codecraze.coder@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Gujarat, India</p>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <i class=""></i>
+                        <div>
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="javascript:void(0)"><i class=""></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/codecraze.dev?utm_source=ig_web_button_share_sheet&igsh=ZHNjOXVyMzM0NDM5"><i class="fab fa-instagram"></i></a>
+                       
+                    </div>
+                </div>
+
+               <div class="contact-form">
+    <form action="https://formspree.io/f/mrblrwdo" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="_replyto" id="email" class="form-control" placeholder="Your email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" class="form-control" placeholder="Your message" required></textarea>
+        </div>
+        
+        <!-- Optional: Redirect after submit -->
+        <input type="hidden" name="_next" value="https://codecraze.com/thankyou.html">
+
+        <!-- Optional: Subject for the email -->
+        <input type="hidden" name="_subject" value="New message from CodeCraze Contact Form">
+
+        <button type="submit" class="submit-button">Send Message</button>
+    </form>
+</div>
+
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#home">
+                        <i class="fas fa-code"></i> CodeCraze
+                    </a>
+                    <p>Premium code resources for modern developers. Designed to enhance your workflow and productivity.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="javascript:void(0)">Documentation</a></li>
+                        <li><a href="javascript:void(0)">Tutorials</a></li>
+                        <li><a href="javascript:void(0)">Blog</a></li>
+                        <li><a href="javascript:void(0)">Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="javascript:void(0)"></a></li>
+                        <li><a href="javascript:void(0)"></a></li>
+                        <li><a href="javascript:void(0)"></a></li>
+                        <li><a href="javascript:void(0)"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 CodeCraze. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script id="app-script">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme toggle functionality
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = themeToggleBtn.querySelector('i');
+            const themeIndicator = document.getElementById('theme-indicator');
+            
+            // Available themes
+            const themes = [
+                { name: 'light', icon: 'fa-sun', displayName: 'Light' },
+                { name: 'dark', icon: 'fa-moon', displayName: 'Dark' },
+                { name: 'neopop', icon: 'fa-bolt', displayName: 'Neopop' },
+                { name: 'rainbow', icon: 'fa-palette', displayName: 'Rainbow' },
+                { name: 'aurora', icon: 'fa-snowflake', displayName: 'Aurora' },
+                { name: 'neon', icon: 'fa-lightbulb', displayName: 'Neon' },
+                { name: 'glassmorphism', icon: 'fa-glasses', displayName: 'Glass' },
+                { name: 'cute', icon: 'fa-heart', displayName: 'Cute' },
+                { name: 'rounded', icon: 'fa-circle', displayName: 'Rounded' },
+                { name: 'golden', icon: 'fa-crown', displayName: 'Golden' }
+            ];
+            
+            // Load saved theme or default to system preference
+            let currentThemeIndex = parseInt(localStorage.getItem('themeIndex')) || 0;
+            
+            // Apply the saved theme on load
+            setTheme(currentThemeIndex);
+            
+            // Theme toggle event
+            themeToggleBtn.addEventListener('click', () => {
+                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                setTheme(currentThemeIndex);
+                localStorage.setItem('themeIndex', currentThemeIndex);
+            });
+            
+            function setTheme(index) {
+                const theme = themes[index];
+                document.body.dataset.theme = theme.name;
+                
+                // Update button icon
+                themeIcon.className = `fas ${theme.icon}`;
+                
+                // Show and update the theme indicator
+                themeIndicator.textContent = `${theme.displayName} Theme`;
+                themeIndicator.classList.add('show');
+                
+                // Hide the indicator after 2 seconds
+                setTimeout(() => {
+                    themeIndicator.classList.remove('show');
+                }, 2000);
+            }
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+                hamburger.innerHTML = navLinks.classList.contains('show') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('show');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Contact form submission (for prototype)
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('This is a prototype. The contact form will be functional in the final version.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - CodeCraze</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sf-pro-display@2.0.1/fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style id="app-style">
+        :root {
+            /* Light Theme (Default) */
+            --bg-primary: #f2f2f7;
+            --bg-secondary: #ffffff;
+            --text-primary: #000000;
+            --text-secondary: #6e6e73;
+            --accent: #007aff;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --nav-bg: rgba(255, 255, 255, 0.7);
+            --border: rgba(0, 0, 0, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --button-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --text-primary: #ffffff;
+            --text-secondary: #98989d;
+            --accent: #0a84ff;
+            --card-bg: rgba(44, 44, 46, 0.7);
+            --nav-bg: rgba(28, 28, 30, 0.7);
+            --border: rgba(255, 255, 255, 0.15);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --button-text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        body {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .download-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .download-icon {
+            font-size: 80px;
+            color: var(--accent);
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite ease-in-out alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+            to {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .download-message {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .download-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease forwards 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease forwards 0.6s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent);
+            width: 0;
+            border-radius: 4px;
+            transition: width 3s ease;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .back-button {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            border: 1px solid var(--border);
+            margin-top: 40px;
+            animation: fadeInUp 1s ease forwards 0.9s;
+            opacity: 0;
+            transform: translateY(20px);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hidden-download {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-container">
+        <i class="fas fa-cloud-download-alt download-icon"></i>
+        <h1 class="download-message">Thanks for supporting CodeCraze 💖</h1>
+        <p class="download-subtitle"></p>
+        
+       
+        
+        <a href="index.html" class="back-button">Back to Home</a>
+        <a id="downloadLink" class="hidden-download" href="#">Download</a>
+    </div>
+
+    <script id="app-script">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get file parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const fileParam = urlParams.get('file') || 'sample-file.zip';
+            
+            const progressFill = document.getElementById('progressFill');
+            const downloadLink = document.getElementById('downloadLink');
+            const progressText = document.querySelector('.progress-text');
+            
+            // Load theme preference
+            const themeIndex = localStorage.getItem('themeIndex') || 0;
+            const themes = ['light', 'dark', 'neopop', 'rainbow', 'aurora', 'neon', 'glassmorphism', 'cute', 'rounded', 'golden'];
+            document.body.dataset.theme = themes[themeIndex];
+            
+            // Simulate download preparation
+            setTimeout(() => {
+                progressFill.style.width = '100%';
+                progressText.textContent = 'Download ready!';
+                
+                // Set download link attributes
+                downloadLink.setAttribute('href', `https://example.com/downloads/${fileParam}`);
+                downloadLink.setAttribute('download', fileParam);
+                
+                // Trigger download after progress completes
+                setTimeout(() => {
+                    downloadLink.click();
+                    progressText.textContent = 'Download started!';
+                }, 3000);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
+
+
+
